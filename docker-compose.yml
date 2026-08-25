@@ -1,5 +1,5 @@
 x-frappe-image: &frappe_image
-  image: ghcr.io/frappe/crm:stable
+  image: ghcr.io/frappe/crm:v1.60.0
   pull_policy: always
   restart: unless-stopped
 
@@ -10,7 +10,7 @@ x-frappe-volumes: &frappe_volumes
 
 services:
   db:
-    image: mariadb:11.8
+    image: mariadb:10.8
     restart: unless-stopped
     command:
       - --character-set-server=utf8mb4

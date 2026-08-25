@@ -68,6 +68,7 @@ Abra `https://bulldog.kairosdemand.com/crm` e entre com:
 ## Atualizações
 
 Faça um backup antes de atualizar. Em seguida, clique em **Deploy** novamente.
-A configuração usa a imagem oficial `ghcr.io/frappe/crm:stable` e preserva os
-dados nos volumes nomeados. Não renomeie os serviços ou volumes após começar a
-usar o CRM.
+A configuração fixa a imagem oficial `ghcr.io/frappe/crm:v1.60.0`, validada
+como contendo o aplicativo CRM. As tags `v1.81.1`, `v1.81.2` e `stable` não são
+usadas porque foram publicadas sem o módulo `crm`. Os dados são preservados nos
+volumes nomeados. Não renomeie os serviços ou volumes após começar a usar o CRM.

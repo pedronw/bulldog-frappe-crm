@@ -34,6 +34,10 @@ ADMIN_PASSWORD=OUTRA_SENHA_FORTE_E_EXCLUSIVA
 Não use espaços, aspas, crase ou o caractere `$` nas senhas. Não coloque essas
 senhas no GitHub.
 
+As senhas podem aparecer nos logs caso um comando de instalação falhe. Se isso
+acontecer durante uma primeira instalação ainda vazia, troque as duas senhas e
+recrie somente os volumes dessa nova stack antes de tentar novamente.
+
 ## 4. Fazer o primeiro deploy
 
 Clique em **Deploy** e aguarde. Na primeira execução, as imagens serão baixadas,

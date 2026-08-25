@@ -78,23 +78,24 @@ services:
       - bash
       - -c
     command:
-      - >
-        wait-for-it -t 180 db:3306;
-        wait-for-it -t 180 redis-cache:6379;
-        wait-for-it -t 180 redis-queue:6379;
+      - |
+        set -e
+        wait-for-it -t 180 db:3306
+        wait-for-it -t 180 redis-cache:6379
+        wait-for-it -t 180 redis-queue:6379
         if [ -f "sites/$$SITE_NAME/site_config.json" ]; then
-          echo "O site $$SITE_NAME ja existe. Criacao ignorada.";
+          echo "O site $$SITE_NAME ja existe. Criacao ignorada."
         else
-          bench new-site
-          --mariadb-user-host-login-scope='%'
-          --admin-password="$$ADMIN_PASSWORD"
-          --db-root-username=root
-          --db-root-password="$$DB_PASSWORD"
-          --install-app crm
-          --set-default
-          "$$SITE_NAME";
-          bench --site "$$SITE_NAME" set-config host_name "https://$$SITE_NAME";
-          bench --site "$$SITE_NAME" migrate;
+          bench new-site \
+            --mariadb-user-host-login-scope='%' \
+            --admin-password="$$ADMIN_PASSWORD" \
+            --db-root-username=root \
+            --db-root-password="$$DB_PASSWORD" \
+            --install-app crm \
+            --set-default \
+            "$$SITE_NAME"
+          bench --site "$$SITE_NAME" set-config host_name "https://$$SITE_NAME"
+          bench --site "$$SITE_NAME" migrate
         fi
     depends_on:
       configurator:
